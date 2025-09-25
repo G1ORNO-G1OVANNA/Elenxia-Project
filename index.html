@@ -36,6 +36,7 @@
         <a class="btn bg-green-600 text-white" href="https://wa.me/911234567890?text=Hi Sharma's Tea Corner!" target="_blank">💬 WhatsApp</a>
         <a class="btn bg-gray-700 text-white" target="_blank" href="https://maps.google.com/?q=12+Market+Road+Jaipur">🗺️ Map</a>
         <a class="btn bg-gray-800 text-white" href="mailto:sharmastea@gmail.com">✉️ Email</a>
+        <button id="copyBtn" class="btn bg-gray-800 text-white mt-2">📋 Copy Link</button>
       </div>
     </div>
   </section>
@@ -65,7 +66,15 @@
 </footer>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const url = location.href; // current page URL
+  try {
+    await navigator.clipboard.writeText(url);
+    alert('Link copied to clipboard!');
+  } catch (err) {
+    alert('Copy failed: ' + err);
+  }
+});
 
 // Fullscreen gallery on click
 const galleryImages = document.querySelectorAll('#gallery img');
@@ -89,6 +98,5 @@ galleryImages.forEach(img => {
   });
 });
 </script>
-
 </body>
 </html>
